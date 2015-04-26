@@ -133,12 +133,12 @@ class VisuoBeta(object):
     if query in ktosyns:
       q=query
     else:
-      q=getclosestobj(ktosyns, query)
+      q=self.getclosestobj(ktosyns, query)
     if obj in db[query]:
       o=obj
     else:
       ktosyns2=dict([(k, ktosyns[k]) for k in db[query]])
-      o=getclosestobj(ktosyns2, obj)
+      o=self.getclosestobj(ktosyns2, obj)
     out=db[q][o]
     return defuzz(self.__class__.ANGL, out['angl']), \
            2**defuzz(self.__class__.DIST, out['dist'])
